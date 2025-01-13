@@ -19,11 +19,12 @@ merged_data = pd.merge(yearly_medians, yearly_medians_harvest, on='year')
 modified_merged_data = pd.merge(yearly_medians, modified_yearly_medians_harvest, on='year')
 # Display the merged dataframe
 print(merged_data)
+print(modified_merged_data)
 file_path1 = "/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_api/data/csv/monthly_medians.csv"
-monthly_medians_by_year.to_csv(file_path1, index=False)
+monthly_medians_by_year.to_csv(file_path1)
 file_path2 = "/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_api/data/csv/yearly_medians.csv"
-yearly_medians.to_csv(file_path2, index=False)
+yearly_medians.to_csv(file_path2)
 file_path3 = "/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_api/data/csv/merged_data.csv"
-merged_data.to_csv(file_path3, index=False)
+merged_data.to_csv(file_path3)
 file_path4 = "/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_api/data/csv/modified_merged_data.csv"
-modified_merged_data.to_csv(file_path4, index=False)
+modified_merged_data.to_csv(file_path4)
