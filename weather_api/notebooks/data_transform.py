@@ -11,8 +11,10 @@ print(yearly_medians)
 harvest_df = pd.read_csv('/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_api/data/csv/br_final.csv').dropna() 
 minas_harvest = harvest_df[harvest_df['subdivision'] == 'Minas Gerais']
 yearly_medians_harvest = minas_harvest.groupby('year')[['million_60kgs_bag', 'nonbear_mill_trees', 'bear_mill_trees', 'avg_unemp_perc']].median()
+yearly_medians_harvest_without_unemp = minas_harvest.groupby('year')[['million_60kgs_bag', 'nonbear_mill_trees', 'bear_mill_trees']].median()
 # Merge the dataframes on the year
 merged_data = pd.merge(yearly_medians, yearly_medians_harvest, on='year')
+merged_data_without_unemp = pd.merge(yearly_medians, yearly_medians_harvest_without_unemp, on='year')
 # Display the merged dataframe
 print(merged_data)
 file_path1 = "/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_api/data/csv/monthly_medians.csv"
@@ -21,3 +23,5 @@ file_path2 = "/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_
 yearly_medians.to_csv(file_path2, index=False)
 file_path3 = "/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_api/data/csv/merged_data.csv"
 merged_data.to_csv(file_path3, index=False)
+file_path4 = "/Users/sa26/Documents/GitHub/Weather-API-Data-Engineering/weather_api/data/csv/merged_data_without_unemp.csv"
+merged_data_without_unemp.to_csv(file_path4, index=False)
